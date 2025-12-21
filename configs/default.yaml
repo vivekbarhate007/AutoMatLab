@@ -1,0 +1,35 @@
+# Default configuration for AutoMatLab experiments
+
+# Dataset configuration
+dataset_name: "sample_csv"  # Options: matbench_mp_gap, matbench_jdft2d, sample_csv
+target_property: "band_gap"  # Target property to predict
+
+# Active learning configuration
+seed_size: 5  # Initial labeled samples
+budget_iterations: 5  # Number of active learning iterations
+batch_size: 2  # Samples to query per iteration
+random_seed: 42  # Random seed for reproducibility
+
+# Model configuration
+model_type: "random_forest"  # Options: random_forest, gradient_boosting
+n_estimators: 100
+max_depth: 20
+n_bootstrap_models: 5  # Number of bootstrap models for uncertainty estimation
+
+# Acquisition function configuration
+acquisition_type: "ucb"  # Options: ucb, ei (expected improvement)
+ucb_kappa: 2.0  # Exploration-exploitation trade-off for UCB
+
+# Feature engineering
+feature_type: "composition_only"  # Options: magpie, composition_only
+normalize_features: true
+
+# Evaluation
+test_size: 0.2  # Fraction of data for held-out test set
+top_k: 10  # Number of top candidates to report
+
+# Output
+output_dir: "runs"  # Base directory for experiment outputs
+save_models: true  # Whether to save trained models
+
+
