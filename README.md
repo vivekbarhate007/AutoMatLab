@@ -2,6 +2,8 @@
 Autonomous DevOps + Observability System with Agentic AI
 AutoAgentOps is a full-stack, agent-driven observability platform designed to simulate how real-world monitoring systems (like Datadog or PagerDuty) work internally. It combines real-time incident detection, distributed tracing, idempotent systems, and chaos engineering into a single interactive system.
 
+
+
 **🔍 Overview**
 AutoAgentOps demonstrates how modern distributed systems handle failures and monitoring:
 Detects latency spikes and system anomalies automatically
@@ -11,22 +13,21 @@ Applies RSA-256 JWT authentication for secure communication
 Simulates failures using a built-in chaos engineering suite
 Provides a live dashboard for real-time monitoring and debugging
 
-**🏗️ Architecture**
-Frontend (React Dashboard)
-        │
-        ▼
-REST API (JWT RS256)
-        │
-        ▼
-Backend (Node.js / Express)
- ├── Auth Service (RSA-256 JWT)
- ├── Order Service (Idempotency)
- ├── Observability Engine (P95 latency, error detection)
- ├── Correlation Tracing (HTTP → DB)
- └── Chaos Suite (Latency/Error Injection)
-        │
-        ▼
-Database (SQLite)
+
+
+| Layer        | Component                  | Description                                                                |
+|--------------|---------------------------|-----------------------------------------------------------------------------|
+| Frontend     | React Dashboard           | UI for monitoring, orders, audit logs, and demo interactions                |
+| API Layer    | REST API (JWT RS256)      | Secure communication using RSA-256 JWT authentication                       |
+| Backend      | Node.js / Express         | Core application logic and request handling                                 |
+| Auth Service | RSA-256 JWT               | Public key-based authentication and token verification                      |
+| Order Service| Idempotency Engine        | Ensures exactly-once execution using Idempotency-Key pattern                |
+| Observability| Detection Engine          | Computes P95 latency, error rates, and auto-triggers incidents              |
+| Tracing      | Correlation System        | Tracks requests end-to-end (HTTP → DB)                                      |
+| Chaos Suite  | Failure Injection         | Simulates latency and errors for system resilience testing                  |
+| Database     | SQLite                    | Stores audit_events, orders, and users                                      |
+
+
 
 **⚡ Key Features**
 **🔹 Real-time Incident Detection**
@@ -40,6 +41,8 @@ Implements RSA-256 JWT authentication with public/private key separation.
 **🔹 Chaos Engineering**
 Simulate real-world failures (latency spikes, errors) and observe system behavior in real time.
 
+
+
 **🛠️ Tech Stack**
 **Layer	Technologies**
 Frontend	React, TypeScript, Tailwind CSS, Recharts
@@ -48,6 +51,8 @@ Auth	JWT RS256, Node Crypto
 Database	SQLite
 Infra	Docker (optional), UUID
 Tooling	Vite
+
+
 
 **🚀 Getting Started**
 1. Clone Repository
@@ -63,6 +68,8 @@ cp .env.example .env
 7. Run Application
 npm run dev
 Open 👉 http://localhost:3000
+
+
 
 🎯 Demo Walkthrough
 **Scenario 1 — Detect Incident**
@@ -80,20 +87,35 @@ Decode JWT token
 Verify RS256 usage
 Confirm public-key-based verification
 
+
+
 **📁 Project Structure**
-**📁 Directory/File	⚙️ Component	📌 Description**
-src/	Frontend Layer	React UI application
-├── components/	UI Components	Reusable UI elements
-├── services/	API Clients	Backend communication
-└── types/	Type Definitions	Shared interfaces
-incidentiq/	Backend Layer	Core server logic
-├── auth/	Auth Service	JWT RSA-256 authentication
-├── orders/	Order Service	Idempotency + processing
-├── observability/	Detection Engine	Incident monitoring system
-└── chaos/	Chaos Suite	Failure injection
-server.ts	Entry Point	Express server
-.env.example	Config Template	Environment setup
-README.md	Documentation	Project guide
+| Layer      | Subsystem            | Component                     | Description                                      |
+|------------|---------------------|-------------------------------|--------------------------------------------------|
+| Frontend   | UI Layer            | Dashboard                     | Displays system metrics and incidents            |
+|            |                     | Orders                        | Manage and create orders                         |
+|            |                     | Audit Logs                    | View request traces and logs                     |
+|            |                     | Demo Guide                    | Step-by-step system walkthrough                  |
+|------------|---------------------|-------------------------------|--------------------------------------------------|
+| API Layer  | Communication       | REST API (JWT RS256)          | Secure request handling and authentication       |
+|------------|---------------------|-------------------------------|--------------------------------------------------|
+| Backend    | Core Services       | Auth Service                  | RSA-256 JWT authentication & verification        |
+|            |                     | Order Service                 | Idempotent order processing                      |
+|            |                     | Observability Engine          | Detects latency spikes and error rates           |
+|            |                     | Correlation Tracing           | Tracks requests (HTTP → DB)                      |
+|            |                     | Chaos Suite                   | Injects failures for testing                     |
+|------------|---------------------|-------------------------------|--------------------------------------------------|
+| Observability | Metrics Engine   | P95 Latency Calculation       | Measures system performance                      |
+|            |                     | Error Detection               | Identifies anomalies and failures                |
+|------------|---------------------|-------------------------------|--------------------------------------------------|
+| Chaos      | Failure Injection   | Inject Latency                | Simulates slow system behavior                   |
+|            |                     | Inject Errors                 | Simulates system failures                        |
+|------------|---------------------|-------------------------------|--------------------------------------------------|
+| Database   | Storage Layer       | audit_events                  | Stores logs and system events                    |
+|            |                     | orders                        | Stores order data                                |
+|            |                     | users                         | Stores user data                                 |
+
+
 
 **🧠 How It Works**
 **Observability Engine**
@@ -107,16 +129,22 @@ Tracks request flow across services
 Ensures safe retries
 Prevents duplicate execution
 
+
+
 **⚙️ Design Decisions**
 **SQLite over Postgres:** Simple local setup, easily replaceable
 **RSA-256 over HS256: **Secure separation of signing & verification
 **Polling Engine: **Lightweight alternative to Kafka-based streaming
+
+
 
 **🔮 Future Improvements**
 Integrate event streaming (Kafka / Redis)
 Add distributed microservices architecture
 Extend to cloud-native deployment (AWS/GCP)
 Incorporate AI-driven anomaly prediction
+
+
 
 **👨‍💻 Author**
 **Vivek Barhate**
