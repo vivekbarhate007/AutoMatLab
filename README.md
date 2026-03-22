@@ -90,27 +90,27 @@ Confirm public-key-based verification
 
 
 **📁 Project Structure**
-| Layer      | Subsystem            | Component                     | Description                                      |
-|------------|---------------------|-------------------------------|--------------------------------------------------|
+| Layer      | Subsystem            | Component                     | Description                                     |
+|                                                                                                                     |
 | Frontend   | UI Layer            | Dashboard                     | Displays system metrics and incidents            |
 |            |                     | Orders                        | Manage and create orders                         |
 |            |                     | Audit Logs                    | View request traces and logs                     |
 |            |                     | Demo Guide                    | Step-by-step system walkthrough                  |
-|------------|---------------------|-------------------------------|--------------------------------------------------|
+|                                                                                                                     |
 | API Layer  | Communication       | REST API (JWT RS256)          | Secure request handling and authentication       |
-|------------|---------------------|-------------------------------|--------------------------------------------------|
+|                                                                                                                     |
 | Backend    | Core Services       | Auth Service                  | RSA-256 JWT authentication & verification        |
 |            |                     | Order Service                 | Idempotent order processing                      |
 |            |                     | Observability Engine          | Detects latency spikes and error rates           |
 |            |                     | Correlation Tracing           | Tracks requests (HTTP → DB)                      |
 |            |                     | Chaos Suite                   | Injects failures for testing                     |
-|------------|---------------------|-------------------------------|--------------------------------------------------|
+|                                                                                                                     |      
 | Observability | Metrics Engine   | P95 Latency Calculation       | Measures system performance                      |
 |            |                     | Error Detection               | Identifies anomalies and failures                |
-|------------|---------------------|-------------------------------|--------------------------------------------------|
+|                                                                                                                     |
 | Chaos      | Failure Injection   | Inject Latency                | Simulates slow system behavior                   |
 |            |                     | Inject Errors                 | Simulates system failures                        |
-|------------|---------------------|-------------------------------|--------------------------------------------------|
+|                                                                                                                     |
 | Database   | Storage Layer       | audit_events                  | Stores logs and system events                    |
 |            |                     | orders                        | Stores order data                                |
 |            |                     | users                         | Stores user data                                 |
